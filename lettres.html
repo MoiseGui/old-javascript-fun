@@ -1,599 +1,525 @@
 ﻿<!DOCTYPE html>
 <html>
+
+<head>
+
   <head>
-    <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="keywords" content="chiffres, cettres, Moise Gui, fun, game" />
-      <meta
-        name="description"
-        content="Jeux Chiffres &amp; Lettres, Have fun!"
-      />
-      <link rel="icon" href="images/logo.jpeg" />
-      <meta name="page_type" content="game-fun" />
-      <title>Lettres - Moise Gui</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-      <script>
-        tailwind.config = {
-          darkMode: "class",
-        };
-      </script>
-    </head>
-
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="chiffres, cettres, Moise Gui, fun, game" />
+    <meta name="description" content="Jeux Chiffres &amp; Lettres, Have fun!" />
+    <link rel="icon" href="images/logo.jpeg" />
+    <meta name="page_type" content="game-fun" />
+    <title>Lettres - Moise Gui</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      function init() {
-        document.getElementById("lettre").focus();
-      }
-    </script>
-
-    <script>
-      //prochaine mise à jour : un bouton commencer....:) et aussi onKeyPress pour 'enter' afin de valider facilement le formulaire
-      function musik(w) {
-        doc = document.getElementById("music");
-        if (w == 1) {
-          //alert("it's working ");
-          doc.src = "music/1.mp3";
-          doc.loop = 0;
-          doc.play();
-        }
-        //if(w == 2) doc.play();
-        if (w == 0) {
-          doc.src = "music/0.mp3";
-          doc.loop = -1;
-          doc.play();
-        }
-        init();
-      }
-    </script>
-    <script>
-      //La notion de point à faire
-      tab = new Array(
-        "fourure",
-        "tableau",
-        "psychiatrie",
-        "psychochinaise",
-        "revenir",
-        "contemplations",
-        "systeme",
-        "algorithme",
-        "bagout",
-        "cinergie",
-        "aleatoire",
-        "sensuel",
-        "boissons",
-        "enfance",
-        "element",
-        "titre",
-        "mystere",
-        "aventure",
-        "calebasse",
-        "calvaire",
-        "grimasse",
-        "chaussures",
-        "senssure",
-        "operation",
-        "vulganiser",
-        "paradis",
-        "physiques",
-        "sciences",
-        "photosynthese",
-        "magique",
-        "tragedie",
-        "turgescence",
-        "theatre",
-        "cylindre",
-        "cultivateur",
-        "exploitation",
-        "candide",
-        "consentement",
-        "agrement",
-        "salutations",
-        "bijoux",
-        "creatures",
-        "routine",
-        "animals",
-        "humains",
-        "mechancete",
-        "vindicatif",
-        "infinitif",
-        "pharmacie",
-        "conclusion",
-        "guinhouya",
-        "kilimandjaro",
-        "avertissements",
-        "villagoise",
-        "escurtion",
-        "justifier",
-        "carantaine",
-        "orgueil",
-        "experience",
-        "liturgie",
-        "singulier",
-        "mauritanie",
-        "cytoplasme",
-        "kwashiorkor",
-        "portugal",
-        "deporter",
-        "courtiser",
-        "africaniser",
-        "foudroyer",
-        "franconiser",
-        "francophone",
-        "titulaire",
-        "journalier",
-        "afganistan",
-        "cinematographie",
-        "autentique",
-        "panthere",
-        "poussin",
-        "coussinet",
-        "bordeaux",
-        "barcelona",
-        "cristallin",
-        "rougeole",
-        "parasynpathique",
-        "vipere",
-        "brasserie",
-        "copenhague",
-        "aeroport",
-        "who",
-        "espatrier",
-        "pelouse",
-        "html",
-        "grandiose",
-        "sniper",
-        "high",
-        "pieux",
-        "humaniser",
-        "lemuriens",
-        "crise",
-        "zenit"
-      );
-      hist = "";
-      function commencer(a) {
-        hist = "";
-        nbre = parseInt(Math.random() * 100);
-        //music = parseInt(Math.random()*10);
-        //alert(nbre);
-        nbre = tab[nbre];
-        tentative = nbre.length;
-        total = new Array();
-        n = "";
-        for (i = 0; i < nbre.length; i++) {
-          total[i] = "*";
-          n += total[i];
-        }
-        document.getElementById("long").innerHTML =
-          "Un mot de " + nbre.length + " lettres cette fois çi";
-        document.getElementById("chang").innerHTML = n;
-        document.getElementById("tente").innerHTML =
-          "Vous avez " + tentative + " tentatives fausses à faire";
-        document.getElementById("historique").innerHTML = "";
-        if (a == "1") {
-          point = 0;
-          document.getElementById("score").innerHTML = point;
-          document.getElementById("chrono").innerHTML = "00 : 05 : 00";
-          setTimeout("minuteur(4,59)", 1000);
-          n_pause = 1;
-          setTimeout("musik(0)", 2000);
-          //setTimeout("temps()",300000);
-        }
-      }
-
-      function handleEnter(e) {
-        var keycode = e.keyCode ? e.keyCode : e.which;
-        if (keycode == "13") {
-          //alert('You pressed enter! - plain javascript');
-          tester();
-        }
-      }
-
-      function temps() {
-        alert("Temps écoulé");
-
-        if (n != nbre) alert("Le mot était " + nbre);
-        alert("Votre score: ◼▶ " + point);
-        if (point > m_score) {
-          alert("😎 🏁 👊 MEILLEUR 📌 SCORE !! 👍🎶📢");
-          nom_m_score = prompt("Votre nom:", "inconnu(e)");
-          m_score = point;
-        }
-        alert("Cette partie est terminée.");
-        // come here.........
-        document.getElementById("game-content").innerHTML =
-          '<a href="lettres.html"><pclass="text-gray-900 dark:text-white text-2xl text-center mt-200">Cliquez ici pour recommencer une nouvelle partie</p></a>';
-        commencer("1");
-      }
-
-      function minuteur(min, sec) {
-        document.getElementById("chrono").style.color = "green";
-        j = sec - 1;
-        if (sec == 0) {
-          if (min == 0) {
-            document.getElementById("chrono").innerHTML =
-              "00 : 0" + min + " : 0" + sec;
-            setTimeout("temps()", 1000);
-          } else {
-            min--;
-            document.getElementById("chrono").innerHTML =
-              "00 : 0" + min + " : 0" + sec;
-            setTimeout("minuteur(" + min + ",59)", 1000);
-          }
-        } else if (sec >= 10) {
-          document.getElementById("chrono").innerHTML =
-            "00 : 0" + min + " : " + sec;
-          setTimeout("minuteur(" + min + "," + j + ")", 1000);
-        } else {
-          document.getElementById("chrono").innerHTML =
-            "00 : 0" + min + " : 0" + sec;
-          setTimeout("minuteur(" + min + "," + j + ")", 1000);
-        }
-        if (min == 0 && sec < 10)
-          document.getElementById("chrono").style.color = "red";
-
-        if (min == 0 && sec == 29) musik(1);
-      }
-
-      function demarer() {
-        document.getElementById("chrono").innerHTML = "00 : 05 : 00";
-        setTimeout("minuteur(4,59)", 1000);
-        //setTimeout("temps()",300000);
-      }
-
-      function pause() {
-        if (n_pause <= 3) {
-          alert(
-            "EN PAUSE, cliquez sur OK pour continuer, Nombre de pauses restantes:" +
-              (3 - n_pause)
-          );
-          n_pause++;
-        }
-        init();
-      }
-
-      function reveler() {
-        document.getElementById("chang").innerHTML = nbre;
-        setTimeout('document.getElementById("chang").innerHTML=n', 20000);
-      }
-
-      function change_bouton() {
-        document.getElementById("bouton").value = "Aide";
-        document.getElementById("bouton").onclick = "reveler()";
-      }
-
-      function tester() {
-        lettre = document.getElementById("lettre").value;
-        if (lettre.length == 1) {
-          if (nbre.indexOf(lettre) == -1) {
-            tentative--;
-            if (tentative == 1) {
-              alert(
-                "La lettre " +
-                  lettre +
-                  " ne fait pas partie du mot 🤔 , veillez en saisir une autre"
-              );
-              document.getElementById("tente").innerHTML =
-                "Dernière tentative!!!";
-              hist += lettre + ", ";
-              document.getElementById("historique").innerHTML = hist;
-              //change_bouton();
-            } else if (tentative == 0) {
-              alert(lettre + " ne fait pas partie du mot");
-              alert("Le mot était: " + nbre);
-              alert(
-                "Vous n'avez pas pu trouver le mot caché, continuer avec un autre mot en cliquant sur OK"
-              );
-              commencer("0");
-            } else {
-              alert(
-                lettre +
-                  " ne fait pas partie du mot :( , veillez en saisir une autre"
-              );
-              document.getElementById("tente").innerHTML =
-                "Il vous reste " + tentative + " tentatives";
-              hist += lettre + ", ";
-              document.getElementById("historique").innerHTML = hist;
-            }
-          } else {
-            fois = 0;
-            for (i = 0; i < nbre.length; i++) {
-              if (nbre[i] == lettre) fois++;
-            }
-            if (fois == 1) {
-              place = nbre.indexOf(lettre);
-              total[place] = lettre;
-              n = "";
-              for (i = 0; i < nbre.length; i++) {
-                n += total[i];
-              }
-              document.getElementById("chang").innerHTML = n;
-            } else {
-              place = new Array();
-              place[0] = nbre.indexOf(lettre, 0);
-              for (i = 1; i < fois; i++) {
-                place[i] = nbre.indexOf(lettre, place[i - 1] + 1);
-              }
-              for (i = 0; i < place.length; i++) {
-                total[place[i]] = lettre;
-              }
-              n = "";
-              for (i = 0; i < nbre.length; i++) {
-                n += total[i];
-              }
-              document.getElementById("chang").innerHTML = n;
-            }
-            hist += lettre + ", ";
-            document.getElementById("historique").innerHTML = hist;
-            if (n == nbre) {
-              setTimeout(
-                'document.getElementById("chang").style.color="orange"',
-                500
-              );
-              setTimeout(
-                'document.getElementById("chang").style.color="blue"',
-                1000
-              );
-              setTimeout(
-                'document.getElementById("chang").style.color="red"',
-                1500
-              );
-              setTimeout(
-                'document.getElementById("chang").style.color="black"',
-                2000
-              );
-              setTimeout(
-                'document.getElementById("chang").style.color=null',
-                2005
-              );
-              setTimeout(
-                'alert("Bravo!! vous êtes parvenue à trouver le mot caché, continuer avec un autre mot en cliquant sur OK")',
-                2010
-              );
-              point += nbre.length;
-              document.getElementById("score").innerHTML = point;
-              setTimeout('commencer("0")', 2060);
-            }
-            init();
-          }
-        } else if (lettre.length == 0) alert("Aucune lettre n'a été saisie");
-        else alert("Une seule lettre à la fois");
-        document.getElementById("lettre").value = "";
-        init();
-      }
+      tailwind.config = {
+        darkMode: "class",
+      };
     </script>
   </head>
 
-  <body onload="init()">
-    <script>
+  <script>
+    function init() {
+      document.getElementById("lettre").focus();
+    }
+  </script>
+
+  <script>
+    //prochaine mise à jour : un bouton commencer....:) et aussi onKeyPress pour 'enter' afin de valider facilement le formulaire
+    function musik(w) {
+      doc = document.getElementById("music");
+      if (w == 1) {
+        //alert("it's working ");
+        doc.src = "music/1.mp3";
+        doc.loop = 0;
+        doc.play();
+      }
+      //if(w == 2) doc.play();
+      if (w == 0) {
+        doc.src = "music/0.mp3";
+        doc.loop = -1;
+        doc.play();
+      }
+      init();
+    }
+  </script>
+  <script>
+    //La notion de point à faire
+    tab = new Array(
+      "fourure",
+      "tableau",
+      "psychiatrie",
+      "psychochinaise",
+      "revenir",
+      "contemplations",
+      "systeme",
+      "algorithme",
+      "bagout",
+      "cinergie",
+      "aleatoire",
+      "sensuel",
+      "boissons",
+      "enfance",
+      "element",
+      "titre",
+      "mystere",
+      "aventure",
+      "calebasse",
+      "calvaire",
+      "grimasse",
+      "chaussures",
+      "senssure",
+      "operation",
+      "vulganiser",
+      "paradis",
+      "physiques",
+      "sciences",
+      "photosynthese",
+      "magique",
+      "tragedie",
+      "turgescence",
+      "theatre",
+      "cylindre",
+      "cultivateur",
+      "exploitation",
+      "candide",
+      "consentement",
+      "agrement",
+      "salutations",
+      "bijoux",
+      "creatures",
+      "routine",
+      "animals",
+      "humains",
+      "mechancete",
+      "vindicatif",
+      "infinitif",
+      "pharmacie",
+      "conclusion",
+      "guinhouya",
+      "kilimandjaro",
+      "avertissements",
+      "villagoise",
+      "escurtion",
+      "justifier",
+      "carantaine",
+      "orgueil",
+      "experience",
+      "liturgie",
+      "singulier",
+      "mauritanie",
+      "cytoplasme",
+      "kwashiorkor",
+      "portugal",
+      "deporter",
+      "courtiser",
+      "africaniser",
+      "foudroyer",
+      "franconiser",
+      "francophone",
+      "titulaire",
+      "journalier",
+      "afganistan",
+      "cinematographie",
+      "autentique",
+      "panthere",
+      "poussin",
+      "coussinet",
+      "bordeaux",
+      "barcelona",
+      "cristallin",
+      "rougeole",
+      "parasynpathique",
+      "vipere",
+      "brasserie",
+      "copenhague",
+      "aeroport",
+      "who",
+      "espatrier",
+      "pelouse",
+      "html",
+      "grandiose",
+      "sniper",
+      "high",
+      "pieux",
+      "humaniser",
+      "lemuriens",
+      "crise",
+      "zenit"
+    );
+    hist = "";
+    function commencer(a) {
+      hist = "";
       nbre = parseInt(Math.random() * 100);
+      //music = parseInt(Math.random()*10);
+      //alert(nbre);
       nbre = tab[nbre];
       tentative = nbre.length;
       total = new Array();
+      n = "";
       for (i = 0; i < nbre.length; i++) {
         total[i] = "*";
+        n += total[i];
       }
-      n = "";
-      n_pause = 1;
-      point = 0;
-      m_score = 2;
-    </script>
-    <div class="bg-[#f9f6f7] dark:bg-gray-700 w-full h-[100vh] overflow-auto">
-      <nav
-        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800"
-      >
-        <div
-          class="container flex flex-wrap justify-between items-center mx-auto"
-        >
-          <a href="./" class="flex">
-            <img src="images/logo_MoiseGui.png" alt="logo" class="h-10" />
-          </a>
-          <button
-            onclick="javascript:document.querySelector('#navbar-default').classList.toggle('hidden');"
-            type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul
-              class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
-            >
-              <li>
-                <a
-                  href="/niveaux.html"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  aria-current="page"
-                  >Chiffres
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/lettres.html"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  >Lettres
-                </a>
-              </li>
-              <div class="pt-10 md:pt-0 self-end">
-                <label
-                  class="inline-flex relative items-center mr-5 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    value=""
-                    class="sr-only peer"
-                    checked
-                    id="dark-mode-switcher"
-                  />
-                  <div
-                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-gray-200 peer-checked:after:translate-x-full peer-checked:after:border-white dark:peer-checked:after:border-gray-200 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-700"
-                  ></div>
-                </label>
-              </div>
-            </ul>
-          </div>
-        </div>
-      </nav>
-      <main>
-        <div class="w-full h-full px-4 md:px-0 text-center pt-10">
-          <h1
-            class="text-red-700 dark:text-red-200 text-4xl justify-self-start"
-          >
-            Le mot caché
-          </h1>
-          <div
-            id="game-content"
-            class="flex flex-col gap-10 align-center justify-center w-full md:w-1/2 h-full mx-auto"
-          >
-            <p
-              class="text-gray-900 dark:text-white text-2xl text-left mt-[-200]"
-            >
-              <u>Règle du jeux:</u> <br />
-              L'ordinateur choisie un mot (bien significatif et en
-              <b><u>Minuscules</u></b
-              >) au hasard, vous essayerez de reconstituer ce mot lettre par
-              lettre. Si vous trouvez une lettre qui se trouve dans le mot alors
-              l'ordinateur vous montrera sa ou ses positions jusqu'à ce que vous
-              ne reconstrisez le mot en entier. Mais attention vous avez un
-              nombre de coups limité pour chaque mot.Vous avez 5 minutes pour
-              trouver le maximum de mots. Vous disposez de 3 pauses par partie.
-              Bonne chance !
-            </p>
-            <div
-              class="flex flex-col align-center gap-4 text-xl text-gray-800 dark:text-gray-300"
-            >
-              <h4 class="text-center" id="long">
-                Un mot de
-                <span class="text-orange-700">
-                  <script>
-                    document.write(nbre.length);
-                  </script>
-                </span>
-                lettres
-              </h4>
-              <h4 class="text-center" id="chang">
-                <script>
-                  for (i = 0; i < total.length; i++) document.write(total[i]);
-                </script>
-              </h4>
+      document.getElementById("long").innerHTML =
+        "Un mot de " + nbre.length + " lettres cette fois çi";
+      document.getElementById("chang").innerHTML = n;
+      document.getElementById("tente").innerHTML =
+        "Vous avez " + tentative + " tentatives fausses à faire";
+      document.getElementById("historique").innerHTML = "";
+      if (a == "1") {
+        point = 0;
+        document.getElementById("score").innerHTML = point;
+        document.getElementById("chrono").innerHTML = "00 : 05 : 00";
+        setTimeout("minuteur(4,59)", 1000);
+        n_pause = 1;
+        setTimeout("musik(0)", 2000);
+        //setTimeout("temps()",300000);
+      }
+    }
 
-              <div class="relative">
-                <input
-                  type="search"
-                  id="lettre"
-                  onkeypress="handleEnter(event)"
-                  class="block w-full p-4 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Entrer un nombre"
-                  required
-                />
-                <button
-                  type="submit"
-                  onclick="tester()"
-                  class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Vérifier
-                </button>
-              </div>
+    function handleEnter(e) {
+      var keycode = e.keyCode ? e.keyCode : e.which;
+      if (keycode == "13") {
+        //alert('You pressed enter! - plain javascript');
+        tester();
+      }
+    }
 
-              <p id="tente">
-                Vous avez
-                <script>
-                  document.write(tentative);
-                </script>
-                tentatives fausses à faires
-              </p>
+    function temps() {
+      alert("Temps écoulé");
+
+      if (n != nbre) alert("Le mot était " + nbre);
+      alert("Votre score: ◼▶ " + point);
+      if (point > m_score) {
+        alert("😎 🏁 👊 MEILLEUR 📌 SCORE !! 👍🎶📢");
+        nom_m_score = prompt("Votre nom:", "inconnu(e)");
+        m_score = point;
+      }
+      alert("Cette partie est terminée.");
+      // come here.........
+      document.getElementById("game-content").innerHTML =
+        '<a href="lettres.html"><pclass="text-gray-900 dark:text-white text-2xl text-center mt-200">Cliquez ici pour recommencer une nouvelle partie</p></a>';
+      commencer("1");
+    }
+
+    function minuteur(min, sec) {
+      document.getElementById("chrono").style.color = "green";
+      j = sec - 1;
+      if (sec == 0) {
+        if (min == 0) {
+          document.getElementById("chrono").innerHTML =
+            "00 : 0" + min + " : 0" + sec;
+          setTimeout("temps()", 1000);
+        } else {
+          min--;
+          document.getElementById("chrono").innerHTML =
+            "00 : 0" + min + " : 0" + sec;
+          setTimeout("minuteur(" + min + ",59)", 1000);
+        }
+      } else if (sec >= 10) {
+        document.getElementById("chrono").innerHTML =
+          "00 : 0" + min + " : " + sec;
+        setTimeout("minuteur(" + min + "," + j + ")", 1000);
+      } else {
+        document.getElementById("chrono").innerHTML =
+          "00 : 0" + min + " : 0" + sec;
+        setTimeout("minuteur(" + min + "," + j + ")", 1000);
+      }
+      if (min == 0 && sec < 10)
+        document.getElementById("chrono").style.color = "red";
+
+      if (min == 0 && sec == 29) musik(1);
+    }
+
+    function demarer() {
+      document.getElementById("chrono").innerHTML = "00 : 05 : 00";
+      setTimeout("minuteur(4,59)", 1000);
+      //setTimeout("temps()",300000);
+    }
+
+    function pause() {
+      if (n_pause <= 3) {
+        alert(
+          "EN PAUSE, cliquez sur OK pour continuer, Nombre de pauses restantes:" +
+          (3 - n_pause)
+        );
+        n_pause++;
+      }
+      init();
+    }
+
+    function reveler() {
+      document.getElementById("chang").innerHTML = nbre;
+      setTimeout('document.getElementById("chang").innerHTML=n', 20000);
+    }
+
+    function change_bouton() {
+      document.getElementById("bouton").value = "Aide";
+      document.getElementById("bouton").onclick = "reveler()";
+    }
+
+    function tester() {
+      lettre = document.getElementById("lettre").value;
+      if (lettre.length == 1) {
+        if (nbre.indexOf(lettre) == -1) {
+          tentative--;
+          if (tentative == 1) {
+            alert(
+              "La lettre " +
+              lettre +
+              " ne fait pas partie du mot 🤔 , veillez en saisir une autre"
+            );
+            document.getElementById("tente").innerHTML =
+              "Dernière tentative!!!";
+            hist += lettre + ", ";
+            document.getElementById("historique").innerHTML = hist;
+            //change_bouton();
+          } else if (tentative == 0) {
+            alert(lettre + " ne fait pas partie du mot");
+            alert("Le mot était: " + nbre);
+            alert(
+              "Vous n'avez pas pu trouver le mot caché, continuer avec un autre mot en cliquant sur OK"
+            );
+            commencer("0");
+          } else {
+            alert(
+              lettre +
+              " ne fait pas partie du mot :( , veillez en saisir une autre"
+            );
+            document.getElementById("tente").innerHTML =
+              "Il vous reste " + tentative + " tentatives";
+            hist += lettre + ", ";
+            document.getElementById("historique").innerHTML = hist;
+          }
+        } else {
+          fois = 0;
+          for (i = 0; i < nbre.length; i++) {
+            if (nbre[i] == lettre) fois++;
+          }
+          if (fois == 1) {
+            place = nbre.indexOf(lettre);
+            total[place] = lettre;
+            n = "";
+            for (i = 0; i < nbre.length; i++) {
+              n += total[i];
+            }
+            document.getElementById("chang").innerHTML = n;
+          } else {
+            place = new Array();
+            place[0] = nbre.indexOf(lettre, 0);
+            for (i = 1; i < fois; i++) {
+              place[i] = nbre.indexOf(lettre, place[i - 1] + 1);
+            }
+            for (i = 0; i < place.length; i++) {
+              total[place[i]] = lettre;
+            }
+            n = "";
+            for (i = 0; i < nbre.length; i++) {
+              n += total[i];
+            }
+            document.getElementById("chang").innerHTML = n;
+          }
+          hist += lettre + ", ";
+          document.getElementById("historique").innerHTML = hist;
+          if (n == nbre) {
+            setTimeout(
+              'document.getElementById("chang").style.color="orange"',
+              500
+            );
+            setTimeout(
+              'document.getElementById("chang").style.color="blue"',
+              1000
+            );
+            setTimeout(
+              'document.getElementById("chang").style.color="red"',
+              1500
+            );
+            setTimeout(
+              'document.getElementById("chang").style.color="black"',
+              2000
+            );
+            setTimeout(
+              'document.getElementById("chang").style.color=null',
+              2005
+            );
+            setTimeout(
+              'alert("Bravo!! vous êtes parvenue à trouver le mot caché, continuer avec un autre mot en cliquant sur OK")',
+              2010
+            );
+            point += nbre.length;
+            document.getElementById("score").innerHTML = point;
+            setTimeout('commencer("0")', 2060);
+          }
+          init();
+        }
+      } else if (lettre.length == 0) alert("Aucune lettre n'a été saisie");
+      else alert("Une seule lettre à la fois");
+      document.getElementById("lettre").value = "";
+      init();
+    }
+  </script>
+</head>
+
+<body onload="init()">
+  <script>
+    nbre = parseInt(Math.random() * 100);
+    nbre = tab[nbre];
+    tentative = nbre.length;
+    total = new Array();
+    for (i = 0; i < nbre.length; i++) {
+      total[i] = "*";
+    }
+    n = "";
+    n_pause = 1;
+    point = 0;
+    m_score = 2;
+  </script>
+  <div class="bg-[#f9f6f7] dark:bg-gray-700 w-full h-[100vh] overflow-auto">
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
+      <div class="container flex flex-wrap justify-between items-center mx-auto">
+        <a href="./" class="flex">
+          <img id="logo" src="images/logo_MoiseGui.png" alt="logo" class="h-10" />
+        </a>
+        <button onclick="javascript:document.querySelector('#navbar-default').classList.toggle('hidden');" type="button"
+          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            <li>
+              <a href="/niveaux.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                aria-current="page">Chiffres
+              </a>
+            </li>
+            <li>
+              <a href="/lettres.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lettres
+              </a>
+            </li>
+            <div class="pt-10 md:pt-0 self-end">
+              <label class="inline-flex relative items-center mr-5 cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer" checked id="dark-mode-switcher" />
+                <div
+                  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-gray-200 peer-checked:after:translate-x-full peer-checked:after:border-white dark:peer-checked:after:border-gray-200 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-700">
+                </div>
+              </label>
             </div>
-            <div
-              class="flex w-full justify-between text-xl text-gray-800 dark:text-gray-300"
-            >
-              <button
-                onclick="mute()"
-                type="button"
-                class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z"
-                  />
-                </svg>
-                <span id="mute">SON</span>
-              </button>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div class="w-full h-full px-4 md:px-0 text-center pt-10">
+        <h1 class="text-red-700 dark:text-red-200 text-4xl justify-self-start">
+          Le mot caché
+        </h1>
+        <div id="game-content" class="flex flex-col gap-10 align-center justify-center w-full md:w-1/2 h-full mx-auto">
+          <p class="text-gray-900 dark:text-white text-2xl text-left mt-[-200]">
+            <u>Règle du jeux:</u> <br />
+            L'ordinateur choisie un mot (bien significatif et en
+            <b><u>Minuscules</u></b>) au hasard, vous essayerez de reconstituer ce mot lettre par
+            lettre. Si vous trouvez une lettre qui se trouve dans le mot alors
+            l'ordinateur vous montrera sa ou ses positions jusqu'à ce que vous
+            ne reconstrisez le mot en entier. Mais attention vous avez un
+            nombre de coups limité pour chaque mot.Vous avez 5 minutes pour
+            trouver le maximum de mots. Vous disposez de 3 pauses par partie.
+            Bonne chance !
+          </p>
+          <div class="flex flex-col align-center gap-4 text-xl text-gray-800 dark:text-gray-300">
+            <h4 class="text-center" id="long">
+              Un mot de
+              <span class="text-orange-700">
+                <script>
+                  document.write(nbre.length);
+                </script>
+              </span>
+              lettres
+            </h4>
+            <h4 class="text-center" id="chang">
+              <script>
+                for (i = 0; i < total.length; i++) document.write(total[i]);
+              </script>
+            </h4>
 
-              <span id="chrono"></span>
-
-              <audio id="music" src="" hidden controls loop="-1"></audio>
-
-              <button
-                onclick="pause()"
-                id="bouton"
-                type="button"
-                class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z"
-                  />
-                </svg>
-                <span id="mute">PAUSE</span>
+            <div class="relative">
+              <input type="search" id="lettre" onkeypress="handleEnter(event)"
+                class="block w-full p-4 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Entrer un nombre" required />
+              <button type="submit" onclick="tester()"
+                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Vérifier
               </button>
             </div>
 
-            <p id="historique" class="text-xl text-gray-800 dark:text-gray-300">
-              Ici apparaitrons l'historique complet de toutes les lettres que
-              vous saisirez
-            </p>
-
-            <p class="text-xl text-gray-800 dark:text-gray-300">
-              Votre score actuel:
-              <b style="color: orange" id="score"
-                ><script>
-                  document.write(point);
-                </script></b
-              >
+            <p id="tente">
+              Vous avez
+              <script>
+                document.write(tentative);
+              </script>
+              tentatives fausses à faires
             </p>
           </div>
+          <div class="flex w-full justify-between text-xl text-gray-800 dark:text-gray-300">
+            <button onclick="mute()" type="button"
+              class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z" />
+              </svg>
+              <span id="mute">SON</span>
+            </button>
+
+            <span id="chrono"></span>
+
+            <audio id="music" src="" hidden controls loop="-1"></audio>
+
+            <button onclick="pause()" id="bouton" type="button"
+              class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z" />
+              </svg>
+              <span id="mute">PAUSE</span>
+            </button>
+          </div>
+
+          <p id="historique" class="text-xl text-gray-800 dark:text-gray-300">
+            Ici apparaitrons l'historique complet de toutes les lettres que
+            vous saisirez
+          </p>
+
+          <p class="text-xl text-gray-800 dark:text-gray-300">
+            Votre score actuel:
+            <b style="color: orange" id="score">
+              <script>
+                document.write(point);
+              </script>
+            </b>
+          </p>
         </div>
-      </main>
-    </div>
-    <script>
-      demarer();
-      setTimeout("musik(0)", 2000);
-    </script>
-  </body>
-  <script src="/scripts/darkMode.js"></script>
-  <script src="/scripts/comon.js"></script>
+      </div>
+    </main>
+  </div>
+  <script>
+    demarer();
+    setTimeout("musik(0)", 2000);
+  </script>
+</body>
+<script src="/scripts/darkMode.js"></script>
+<script src="/scripts/comon.js"></script>
+
 </html>

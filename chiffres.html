@@ -5,283 +5,228 @@
 </script>
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="chiffres, cettres, Moise Gui, fun, game" />
-    <meta name="description" content="Jeux Chiffres &amp; Lettres, Have fun!" />
-		<link rel="icon" href="images/logo.jpeg" />
-    <meta name="page_type" content="game-fun" />
-    <title>Chiffres - Moise Gui</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        darkMode: "class",
-      };
-    </script>
-  </head>
 
-  <body onload="init()">
-    <div
-      class="bg-[#f9f6f7] dark:bg-gray-700 w-full max-h-[100vh] overflow-hidden"
-    >
-      <nav
-        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800"
-      >
-        <div
-          class="container flex flex-wrap justify-between items-center mx-auto"
-        >
-          <a href="./" class="flex">
-            <img src="images/logo_MoiseGui.png" alt="logo" class="h-10" />
-          </a>
-          <button
-            onclick="javascript:document.querySelector('#navbar-default').classList.toggle('hidden');"
-            type="button"
-            class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-            <svg
-              class="hidden w-6 h-6"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          </button>
-          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
-            <ul
-              class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
-            >
-              <li>
-                <a
-                  href="/niveaux.html"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  aria-current="page"
-                  >Chiffres
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/lettres.html"
-                  class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-                  >Lettres
-                </a>
-              </li>
-              <div class="pt-10 md:pt-0 self-end">
-                <label
-                  class="inline-flex relative items-center mr-5 cursor-pointer"
-                >
-                  <input
-                    type="checkbox"
-                    value=""
-                    class="sr-only peer"
-                    checked
-                    id="dark-mode-switcher"
-                  />
-                  <div
-                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-gray-200 peer-checked:after:translate-x-full peer-checked:after:border-white dark:peer-checked:after:border-gray-200 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-700"
-                  ></div>
-                </label>
-              </div>
-            </ul>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="chiffres, cettres, Moise Gui, fun, game" />
+  <meta name="description" content="Jeux Chiffres &amp; Lettres, Have fun!" />
+  <link rel="icon" href="images/logo.jpeg" />
+  <meta name="page_type" content="game-fun" />
+  <title>Chiffres - Moise Gui</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+    };
+  </script>
+</head>
+
+<body onload="init()">
+  <div class="bg-[#f9f6f7] dark:bg-gray-700 w-full max-h-[100vh] overflow-hidden">
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800">
+      <div class="container flex flex-wrap justify-between items-center mx-auto">
+        <a href="./" class="flex">
+          <img id="logo" src="images/logo_MoiseGui.png" alt="logo" class="h-10" />
+        </a>
+        <button onclick="javascript:document.querySelector('#navbar-default').classList.toggle('hidden');" type="button"
+          class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Open main menu</span>
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+              clip-rule="evenodd"></path>
+          </svg>
+          <svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd"
+              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+              clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+          <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+            <li>
+              <a href="/niveaux.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                aria-current="page">Chiffres
+              </a>
+            </li>
+            <li>
+              <a href="/lettres.html"
+                class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Lettres
+              </a>
+            </li>
+            <div class="pt-10 md:pt-0 self-end">
+              <label class="inline-flex relative items-center mr-5 cursor-pointer">
+                <input type="checkbox" value="" class="sr-only peer" checked id="dark-mode-switcher" />
+                <div
+                  class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-gray-200 peer-checked:after:translate-x-full peer-checked:after:border-white dark:peer-checked:after:border-gray-200 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-700">
+                </div>
+              </label>
+            </div>
+          </ul>
         </div>
-      </nav>
-      <main>
-        <script>
-          let nom;
-          // alert("Bienvenue au niveau 1");
-          // nom = prompt("Veillez entrez votre nom:", "inconnu(e)");
-          if (nom == null) nom = "inconnu(e)";
-        </script>
-        <script>
-          function handleEnter(e) {
-            var keycode = e.keyCode ? e.keyCode : e.which;
-            if (keycode == "13") {
-              //alert('You pressed enter! - plain javascript');
-              valider();
-            }
+      </div>
+    </nav>
+    <main>
+      <script>
+        let nom;
+        // alert("Bienvenue au niveau 1");
+        // nom = prompt("Veillez entrez votre nom:", "inconnu(e)");
+        if (nom == null) nom = "inconnu(e)";
+      </script>
+      <script>
+        function handleEnter(e) {
+          var keycode = e.keyCode ? e.keyCode : e.which;
+          if (keycode == "13") {
+            //alert('You pressed enter! - plain javascript');
+            valider();
           }
+        }
 
-          function niveau(level) {
-            let nbreInput = document.getElementById("nbre");
-            if (level == 1) {
-              alert("Niveau 1");
+        function niveau(level) {
+          let nbreInput = document.getElementById("nbre");
+          if (level == 1) {
+            alert("Niveau 1");
+            document.getElementsByTagName("title").item(0).innerHTML =
+              "Niveau 1";
+            coup = 3;
+            nombre = parseInt(Math.random() * 10);
+            document.getElementsByTagName("p").item(0).innerHTML =
+              "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 10. Vous devez essayer de dévinez ce nombre en 3 coups. Bonne chance " +
+              nom;
+            nbreInput.value = "";
+          }
+          if (level == 2) {
+            if (chance == 4) {
+              chance = 0;
+              alert(
+                "Vous avez échoué à trois reprises, et donc vous retournez au niveau 1"
+              );
+              niveau(1);
+            } else {
+              chance++;
+              alert("Niveau 2");
               document.getElementsByTagName("title").item(0).innerHTML =
-                "Niveau 1";
-              coup = 3;
-              nombre = parseInt(Math.random() * 10);
+                "Niveau 2";
+              coup = 5;
+              nombre = parseInt(Math.random() * 100);
               document.getElementsByTagName("p").item(0).innerHTML =
-                "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 10. Vous devez essayer de dévinez ce nombre en 3 coups. Bonne chance " +
+                "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 100. Vous devez essayer de dévinez ce nombre en 5 coups. Encore Bonne chance " +
                 nom;
               nbreInput.value = "";
             }
-            if (level == 2) {
-              if (chance == 4) {
-                chance = 0;
-                alert(
-                  "Vous avez échoué à trois reprises, et donc vous retournez au niveau 1"
-                );
-                niveau(1);
-              } else {
-                chance++;
-                alert("Niveau 2");
-                document.getElementsByTagName("title").item(0).innerHTML =
-                  "Niveau 2";
-                coup = 5;
-                nombre = parseInt(Math.random() * 100);
-                document.getElementsByTagName("p").item(0).innerHTML =
-                  "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 100. Vous devez essayer de dévinez ce nombre en 5 coups. Encore Bonne chance " +
-                  nom;
-                nbreInput.value = "";
-              }
-            }
-            if (level == 3) {
-              if (chance == 6) {
-                chance = 0;
-                alert(
-                  "Vous avez échoué à 5 reprises, et donc vous retournez au niveau 2"
-                );
-                niveau(2);
-              } else {
-                chance++;
-                alert("Niveau 3");
-                document.getElementsByTagName("title").item(0).innerHTML =
-                  "Niveau 3";
-                coup = 10;
-                nombre = parseInt(Math.random() * 1000);
-                document.getElementsByTagName("p").item(0).innerHTML =
-                  "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 1000. Vous devez essayer de dévinez ce nombre en 10 coups. Encore Bonne chance " +
-                  nom;
-                nbreInput.value = "";
-              }
-            }
           }
-          coup = 3;
-          chance = 0;
-          nombre = parseInt(Math.random() * 10);
-          a = 1;
-          function valider() {
-            let nbreInput = document.getElementById("nbre");
-            let infoSection = document.getElementsByTagName("p").item(0);
-            if (nbreInput.value == nombre) {
-              reponse = confirm(
-                "Bravo " + nom + " vous avez gagnez, continuer?"
+          if (level == 3) {
+            if (chance == 6) {
+              chance = 0;
+              alert(
+                "Vous avez échoué à 5 reprises, et donc vous retournez au niveau 2"
               );
-              a++;
-              if (a > 3) {
-                alert(
-                  "FELICITATION!! " +
-                    nom +
-                    " Vous avez terminez avec succès tous les 3 niveaux de ce jeux"
-                );
-                document.getElementsByTagName("main").item(0).innerHTML =
-                  'Cliquez <a href="niveaux.html"> ici </a> pour rejouer';
-              } else niveau(a);
+              niveau(2);
             } else {
-              coup--;
-              if (coup == 0) {
-                alert("Le nombre était " + nombre);
-                alert("vous avez perdu!!, continuez?");
-                nbreInput.value = "";
-                coup = 3;
-                nombre = parseInt(Math.random() * 10);
-                infoSection.innerHTML =
-                  "Règle du jeux: <br> L'ordinateur choisit un nombre au hasard un nombre compris entre 0 et 10. Vous devez essayer de dévinez ce nombre en 3 coups. Encore Bonne chance " +
-                  nom;
-                niveau(a);
-              } else {
-                if (nbreInput.value > nombre) alert("Plus petit que ça");
-                if (nbreInput.value < nombre) alert("plus grand que ça");
-                infoSection.innerHTML = "Vous avez encore " + coup + " coups";
-              }
+              chance++;
+              alert("Niveau 3");
+              document.getElementsByTagName("title").item(0).innerHTML =
+                "Niveau 3";
+              coup = 10;
+              nombre = parseInt(Math.random() * 1000);
+              document.getElementsByTagName("p").item(0).innerHTML =
+                "Règle du jeux: <br> L'ordinateur choisit un nombre au hazard un nombre compris entre 0 et 1000. Vous devez essayer de dévinez ce nombre en 10 coups. Encore Bonne chance " +
+                nom;
+              nbreInput.value = "";
             }
-            nbreInput.focus();
-            nbreInput.value = "";
           }
-        </script>
-        <div class="w-full h-full px-4 md:px-0 text-center pt-10">
-          <h1
-            class="text-red-700 dark:text-red-200 text-4xl justify-self-start"
-          >
-            Jeux de chriffre
-          </h1>
-          <div
-            class="flex flex-col gap-10 align-center justify-center w-full md:w-1/2 h-full mx-auto"
-          >
-            <p
-              class="text-gray-900 dark:text-white text-2xl text-left mt-[-200]"
-            >
-              <u>Règle du jeux:</u> <br />
-              L'ordinateur choisit un nombre au hazard un nombre compris entre 0
-              et 10. Vous devez essayer de dévinez ce nombre en 3 coups.<br />
-              Bonne chance
-              <script>
-                document.write(nom);
-              </script>
-              !
-            </p>
-            <div>
-              <label
-                for="search"
-                class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-                >Entrer un nombre
-              </label>
-              <div class="relative">
-                <input
-                  type="search"
-                  id="nbre"
-                  onkeypress="handleEnter(event)"
-                  class="block w-full p-4 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="Entrer un nombre"
-                  required
-                />
-                <button
-                  type="submit"
-                  onclick="valider()"
-                  class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                >
-                  Valider
-                </button>
-              </div>
+        }
+        coup = 3;
+        chance = 0;
+        nombre = parseInt(Math.random() * 10);
+        a = 1;
+        function valider() {
+          let nbreInput = document.getElementById("nbre");
+          let infoSection = document.getElementsByTagName("p").item(0);
+          if (nbreInput.value == nombre) {
+            reponse = confirm(
+              "Bravo " + nom + " vous avez gagnez, continuer?"
+            );
+            a++;
+            if (a > 3) {
+              alert(
+                "FELICITATION!! " +
+                nom +
+                " Vous avez terminez avec succès tous les 3 niveaux de ce jeux"
+              );
+              document.getElementsByTagName("main").item(0).innerHTML =
+                'Cliquez <a href="niveaux.html"> ici </a> pour rejouer';
+            } else niveau(a);
+          } else {
+            coup--;
+            if (coup == 0) {
+              alert("Le nombre était " + nombre);
+              alert("vous avez perdu!!, continuez?");
+              nbreInput.value = "";
+              coup = 3;
+              nombre = parseInt(Math.random() * 10);
+              infoSection.innerHTML =
+                "Règle du jeux: <br> L'ordinateur choisit un nombre au hasard un nombre compris entre 0 et 10. Vous devez essayer de dévinez ce nombre en 3 coups. Encore Bonne chance " +
+                nom;
+              niveau(a);
+            } else {
+              if (nbreInput.value > nombre) alert("Plus petit que ça");
+              if (nbreInput.value < nombre) alert("plus grand que ça");
+              infoSection.innerHTML = "Vous avez encore " + coup + " coups";
+            }
+          }
+          nbreInput.focus();
+          nbreInput.value = "";
+        }
+      </script>
+      <div class="w-full h-full px-4 md:px-0 text-center pt-10">
+        <h1 class="text-red-700 dark:text-red-200 text-4xl justify-self-start">
+          Jeux de chriffre
+        </h1>
+        <div class="flex flex-col gap-10 align-center justify-center w-full md:w-1/2 h-full mx-auto">
+          <p class="text-gray-900 dark:text-white text-2xl text-left mt-[-200]">
+            <u>Règle du jeux:</u> <br />
+            L'ordinateur choisit un nombre au hazard un nombre compris entre 0
+            et 10. Vous devez essayer de dévinez ce nombre en 3 coups.<br />
+            Bonne chance
+            <script>
+              document.write(nom);
+            </script>
+            !
+          </p>
+          <div>
+            <label for="search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Entrer un nombre
+            </label>
+            <div class="relative">
+              <input type="search" id="nbre" onkeypress="handleEnter(event)"
+                class="block w-full p-4 pl-2 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Entrer un nombre" required />
+              <button type="submit" onclick="valider()"
+                class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Valider
+              </button>
             </div>
-						<div>
-							<button onclick="mute()" type="button" class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z"/></svg>
-								<span id="mute">SON</span>
-							</button>
-						</div>
-            <audio
-              id="music"
-              src="music/1.mp3"
-              hidden
-              controls
-							autoplay
-              loop="-1"
-            ></audio>
           </div>
+          <div>
+            <button onclick="mute()" type="button"
+              class="text-gray-900 bg-white hover:bg-gray-100 border border-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-auto flex gap-4 justify-center items-center dark:focus:ring-gray-800 dark:bg-white dark:border-gray-700 dark:text-gray-900 dark:hover:bg-gray-200">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path
+                  d="M2 6h3.828c-1.335 2.905-1.335 9.096 0 12h-3.828c-1.311-1.108-2-3.551-2-5.995 0-2.45.692-4.9 2-6.005zm22 6.005c.005 8.031-3.145 12.864-6.121 11.864-.774-.26-9.567-5.579-9.567-5.579-1.993-2.22-1.993-10.288 0-12.508 0 0 9.161-5.476 9.548-5.633 2.691-1.086 6.136 3.82 6.14 11.856zm-3.383-7.693c-1.053-2.264-3.002-2.226-4.034.002-.588 1.271-.993 3.165-1.21 4.797h.527c1.587 0 2.873 1.287 2.873 2.875s-1.286 2.875-2.873 2.875h-.515c.217 1.603.616 3.538 1.206 4.89.988 2.271 3.062 2.232 4.033-.002 1.946-4.477 1.772-11.609-.007-15.437z" />
+              </svg>
+              <span id="mute">SON</span>
+            </button>
+          </div>
+          <audio id="music" src="music/1.mp3" hidden controls autoplay loop="-1"></audio>
         </div>
-      </main>
-    </div>
-  </body>
-  <script src="/scripts/darkMode.js"></script>
-  <script src="/scripts/comon.js"></script>
+      </div>
+    </main>
+  </div>
+</body>
+<script src="/scripts/darkMode.js"></script>
+<script src="/scripts/comon.js"></script>
+
 </html>

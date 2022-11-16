@@ -1,5 +1,6 @@
 const body = document.querySelector("body");
 const toogle = document.querySelector("#dark-mode-switcher");
+const logo = document.querySelector("#logo");
 
 // toogle dark mode
 let themeMode = localStorage.getItem("themeMode");
@@ -10,6 +11,7 @@ if (themeMode === "light") {
 }
 function toggleDarkMode() {
   const isDark = body.classList.toggle("dark");
+  changeLogo();
   if (isDark) {
     localStorage.setItem("themeMode", "dark");
   } else {
@@ -29,3 +31,13 @@ if (isDarkMode()) {
 } else {
   toogle.checked = false;
 }
+
+// change logo
+function changeLogo() {
+  if (isDarkMode()) {
+    logo.src = "images/logo_moisegui_violet_clair.png";
+  } else {
+    logo.src = "images/logo_MoiseGui.png";
+  }
+}
+changeLogo();
