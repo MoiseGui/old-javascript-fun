@@ -6,32 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="chiffres, cettres, Moise Gui, fun, game" />
     <meta name="description" content="Jeux Chiffres &amp; Lettres, Have fun!" />
+    <link rel="icon" href="images/logo.jpeg" />
     <meta name="page_type" content="game-fun" />
     <title>Chiffres &amp; Lettres - Moise Gui</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      body {
-        background: #f9f6f7;
-      }
-    </style>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
   </head>
   <body>
-    <div>
+    <div class="bg-[#f9f6f7] dark:bg-gray-700 min-h-[100vh]">
       <nav
-        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800"
+        class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-800"
       >
         <div
           class="container flex flex-wrap justify-between items-center mx-auto"
         >
-          <a href="https://moisegui.com" class="flex">
+          <a href="./" class="flex">
             <img src="images/logo_MoiseGui.png" alt="logo" class="h-10" />
           </a>
           <button
-            data-collapse-toggle="mobile-menu"
+            onclick="javascript:document.querySelector('#navbar-default').classList.toggle('hidden');"
             type="button"
             class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-            aria-controls="mobile-menu-2"
-            aria-expanded="false"
           >
             <span class="sr-only">Open main menu</span>
             <svg
@@ -59,13 +58,13 @@
               ></path>
             </svg>
           </button>
-          <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+          <div class="hidden w-full md:block md:w-auto" id="navbar-default">
             <ul
               class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium"
             >
               <li>
                 <a
-                  href="/niveaux.html"
+                  href="/chiffres.html"
                   class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
                   aria-current="page"
                   >Chiffres
@@ -78,6 +77,22 @@
                   >Lettres
                 </a>
               </li>
+              <div class="pt-10 md:pt-0 self-end">
+                <label
+                  class="inline-flex relative items-center mr-5 cursor-pointer"
+                >
+                  <input
+                    type="checkbox"
+                    value=""
+                    class="sr-only peer"
+                    checked
+                    id="dark-mode-switcher"
+                  />
+                  <div
+                    class="w-11 h-6 bg-gray-200 rounded-full peer peer-focus:ring-4 peer-focus:ring-gray-200 peer-checked:after:translate-x-full peer-checked:after:border-white dark:peer-checked:after:border-gray-200 after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-gray-700"
+                  ></div>
+                </label>
+              </div>
             </ul>
           </div>
         </div>
@@ -87,8 +102,10 @@
         <div
           class="container mx-auto p-4 pt-10 text-center flex flex-col gap-4"
         >
-          <h1 class="text-red-700 text-4xl">Chiffres & Lettres</h1>
-          <p class="text-gray-900 text-2xl">Have fun!</p>
+          <h1 class="text-red-700 dark:text-red-200 text-4xl">
+            Chiffres & Lettres
+          </h1>
+          <p class="text-gray-900 dark:text-white text-2xl">Have fun!</p>
 
           <div class="flex flex-wrap gap-4 md:p-10 text-left">
             <div class="md:p-4">
@@ -112,7 +129,7 @@
                     essayer de dévinez ce nombre en 3 coups. Bonne chance!
                   </p>
                   <a
-                    href="/niveaux.html"
+                    href="/chiffres.html"
                     class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                   >
                     Jouer maintenant
@@ -151,7 +168,8 @@
                   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     L'ordinateur choisie un mot (bien significatif et en
                     Minuscules) au hasard, vous essayerez de reconstituer ce mot
-                    lettre par lettre... <br/> Bonne chance!
+                    lettre par lettre... <br />
+                    Bonne chance!
                   </p>
                   <a
                     href="/mots.html"
@@ -180,4 +198,5 @@
       </section>
     </div>
   </body>
+  <script src="/scripts/darkMode.js"></script>
 </html>
