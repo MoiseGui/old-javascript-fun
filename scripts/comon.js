@@ -11,3 +11,13 @@ function mute() {
   }
   init();
 }
+
+function pauseMusic() {
+  doc = document.getElementById("music");
+  doc.pause();
+}
+
+function playMusic() {
+  doc = document.getElementById("music");
+  doc.play();
+}

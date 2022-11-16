@@ -25,26 +25,6 @@
       document.getElementById("lettre").focus();
     }
   </script>
-
-  <script>
-    //prochaine mise à jour : un bouton commencer....:) et aussi onKeyPress pour 'enter' afin de valider facilement le formulaire
-    function musik(w) {
-      doc = document.getElementById("music");
-      if (w == 1) {
-        //alert("it's working ");
-        doc.src = "music/1.mp3";
-        doc.loop = 0;
-        doc.play();
-      }
-      //if(w == 2) doc.play();
-      if (w == 0) {
-        doc.src = "music/0.mp3";
-        doc.loop = -1;
-        doc.play();
-      }
-      init();
-    }
-  </script>
   <script>
     //La notion de point à faire
     tab = new Array(
@@ -242,11 +222,12 @@
 
     function pause() {
       if (n_pause <= 3) {
+        pauseMusic();
         alert(
           "EN PAUSE, cliquez sur OK pour continuer, Nombre de pauses restantes:" +
-          (3 - n_pause)
+          (3 - n_pause++)
         );
-        n_pause++;
+        playMusic();
       }
       init();
     }
@@ -513,12 +494,31 @@
       </div>
     </main>
   </div>
+  <script src="/scripts/darkMode.js"></script>
+  <script src="/scripts/comon.js"></script>
+  <script>
+    //prochaine mise à jour : un bouton commencer....:) et aussi onKeyPress pour 'enter' afin de valider facilement le formulaire
+    function musik(w) {
+      doc = document.getElementById("music");
+      if (w == 1) {
+        //alert("it's working ");
+        doc.src = "music/1.mp3";
+        doc.loop = 0;
+        doc.play();
+      }
+      //if(w == 2) doc.play();
+      if (w == 0) {
+        doc.src = "music/0.mp3";
+        doc.loop = -1;
+        doc.play();
+      }
+      init();
+    }
+  </script>
   <script>
     demarer();
     setTimeout("musik(0)", 2000);
   </script>
 </body>
-<script src="/scripts/darkMode.js"></script>
-<script src="/scripts/comon.js"></script>
 
 </html>
